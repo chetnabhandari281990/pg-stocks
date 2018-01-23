@@ -1,4 +1,4 @@
-Stocks monitoring application developed with SpringBoot
+Stocks monitoring application developed with SpringBoot + MongoDB
 
 # pq-stocks
 1. Start Mongo db on your localhost , port : 27017.
