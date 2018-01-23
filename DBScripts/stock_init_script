@@ -1,0 +1,5 @@
+use stock-repo
+
+db.sequence.insert({
+ "_id" : "stockId",
+ "seq" : NumberLong(0)})

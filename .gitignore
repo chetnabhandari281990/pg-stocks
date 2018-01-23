@@ -1,0 +1,8 @@
+/target/
+/bin/
+/logs/
+**/.classpath
+**.project
+**.settings
+**.mvn
+*mvnw*

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+    <title>Create a new stock</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1> Add New Stock</h1>
+	<a href="/"> Go Back </a>
+    <form action="#" method="post">
+        <p>Name: <input type="text" id="stock-name" /></p>
+<!--          <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small> -->
+        <p>Current Price: <input type="number" step="any" id="stock-curr-price"  /></p>
+<!--           <small th:if="${#fields.hasErrors('currentPrice')}" th:errors="*{currentPrice}"></small> -->
+        <p><button type="button" class="btn btn-primary" th:onclick="'javascript:addStock();'">Save</button></p>
+        
+    </form>
+
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+   function addStock(){  
+	var stock = {};
+	stock.name = $('#stock-name').val();
+	stock.currentPrice =  $('#stock-curr-price').val();
+	
+
+     $.ajax({
+         type : "POST",
+         contentType: "application/json",
+         url : "/v1/stocks",
+         data: JSON.stringify(stock),
+         dataType: 'json',
+         success : function(response) {
+           // alert("Suceeded!");
+        	  window.location = "/";
+         },
+         error : function(e) {
+            alert('Invalid input!: ' + e.responseJSON.msg);
+         }
+     }); 
+    
+
+}
+    /*]]>*/
+</script>
+</body>
+	
+</html>
